@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de performance de alunos.</title>
+</head>
+<body>
+    <div style="border: 2px black solid; width: 50%; height: 600px;">
+    <h2>Análise de performance de alunos - Registro</h2>
+    <br><br>
+    Entre com o nome do aluno: <input type="text" id="inp_nomealuno">
+    <br><br>
+    Entre com a nota do aluno: <input type="text" id="inp_notalauno">
+    <br>
+    <button onclick="registro()">Registrar</button>
+    <button onclick="analise()">Analisar</button>
+    <br><br>
+    <div id="msg"></div>
+    </div>
+<br><br>
+<div style="border: 2px black solid; width: 50%; height: 600px;">
+    <h2>Análise de performance de alunos - Registro</h2>
+    <br><br>
+    Entre com o intervalo de notas: <input type="text" id="inp_de"> 
+                                    <input type="text" id="inp_ate">
+    
+    </div>
+</body>
+</html>
+<script>
+
+    var vt_analise = [];
+
+    function registro(){
+        var nome = inp_nomealuno.value;
+        var nota = Number(inp_notalauno.value);
+      
+
+        if(nome == ''){
+            alert('Preencha o campo corretamente.')
+        } else if(nota < 0 || nota > 10){
+            alert('As notas devem estar entre 0 e 10.')
+        } else{
+            console.log(nome);
+            vt_analise.push(nome);
+            vt_analise.push(nota);
+            msg.innerHTML = ''
+
+            for (var index = vt_analise.length -1; index >= 0; index--) {
+
+                msg.innerHTML += `${vt_analise[index]}, <br>`
+            } 
+        
+           
+        }
+
+        inp_nomealuno.value = '';
+        inp_notalauno.value = '';
+    }
+
+
+
+    function analise(){
+        var de = inp_de.value;
+        var ate = inp_ate.value;
+
+        if(de < 0 || de > 10){
+            alert('As notas devem estar entre 0 e 10.');
+        } else if(ate < 0 || ate > 10){
+            alert('As notas devem estar entre 0 e 10.');
+        } else if(de > ate){
+            alert('O intervalo de deve ser menor ou igual ao intervalo de até.');
+        }
+    }
+
+
+</script>

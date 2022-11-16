@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  Nome do seu filho: <input type="text" id="inp_nome">
+  <button onclick="cad()">Cadastrar</button>
+  <button onclick="pesq()">Atualizar familia</button>
+  <br><br>
+  <div id="msg"></div>
+
+</body>
+
+</html>
+<script>
+  var vt_nome = [];
+
+  function cad() {
+    var nome = inp_nome.value;
+    var encontrado = false;
+
+    if (vt_nome.length == 0) {
+
+      vt_nome.push(nome);
+
+    } else {
+      for (var cont = 0; cont < vt_nome.length; cont++) {
+
+        if (nome == vt_nome[cont]) {
+          alert('Não pode nome repitido.');
+          encontrado = true;
+        }
+      }
+      if (encontrado == false) {
+        vt_nome.push(nome);
+      }
+    }
+
+    inp_nome.value = '';
+  }
+
+  function pesq() {
+    var nome = inp_nome.value;
+
+    if (vt_nome.length == 0) {
+      alert('Sem filhos cadastrados.')
+    } else {
+      msg.innerHTML = `Você tem ${vt_nome.length} filhos <br><br>
+                       Seu custo mensal será aproximadamente R$${(vt_nome.length * 3000).toFixed(2)} se colocar eles em escola particular
+                       ou R$${(vt_nome.length * 1500).toFixed(2)} se eles estudarem em escola pública`
+    }
+  }
+
+
+
+
+
+</script>

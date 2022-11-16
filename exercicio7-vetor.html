@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  Filmes: <input type="text" id="inp_filme">
+  <button onclick="bt_cad()">Cadastrar</button>
+  <br><br>
+  <div id="msg"></div>
+
+
+</body>
+
+</html>
+<script>
+
+  var vt_filme = []
+
+  function bt_cad() {
+    var filmes = inp_filme.value;
+
+    if (filmes == '') {
+      alert('Insira filmes');
+    } else {
+
+      vt_filme.push(filmes);
+
+      console.log(filmes);
+
+      if (vt_filme.length % 2 == 0) {
+        msg.innerHTML += `<span style="color: red">${filmes}</span><br>`
+      } else {
+        msg.innerHTML += `<span style="color: blue"> ${filmes} </span> <br>`
+      }
+
+
+
+
+      inp_filme.value = '';
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+</script>

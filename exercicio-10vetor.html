@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  Linhas de ônibus: <input type="text" id="inp_linha">
+  <button onclick="busao()">Gravar busão</button>
+  <div id="msg"></div>
+  <br><br>
+  Pesquisa: <input type="text" id="inp_pesquisa">
+  <button onclick="pesquisa()">Pesquisar linha</button>
+  <div id="msg2"></div>
+</body>
+
+</html>
+<script>
+  var vt_busao = [];
+
+  function busao() {
+    var linha = inp_linha.value;
+
+    console.log(linha);
+
+    vt_busao.push(linha);
+
+    msg.innerHTML = '';
+
+    for (var cont = vt_busao.length - 1; cont >= 0; cont--) {
+
+      msg.innerHTML += `${vt_busao[cont]}, <br>`
+
+    }
+
+    inp_linha.value = '';
+  }
+
+  function pesquisa() {
+    var linha = inp_linha.value;
+    var pesquisa = inp_pesquisa.value;
+    var cont = 0;
+    var posicao = [];
+
+    console.log(linha)
+
+    for (var index = 0; index < vt_busao.length; index++) {
+
+      // se a pesquisa for = vetor na posição do for, ele insere a posição no posição para guardar a ordem, depois incrementa para saber
+      // quantas vezes a linha apareceu e depois aparace a msg;
+
+      if (pesquisa == vt_busao[index]) {
+        posicao.push(index);
+        // igual ao contador ++
+        cont++;
+        msg2.innerHTML = `Você já pegou essa linha ${cont} vezes, nessa ordem: ${posicao}`
+      }
+    }
+  }
+
+
+
+
+</script>
