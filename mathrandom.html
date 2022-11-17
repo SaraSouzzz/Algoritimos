@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jo Ken Po</title>
+</head>
+<body>
+    <h1>Jo Ken Po</h1>
+    <button onclick="jogo()"><h1>Jogar</h1></button>
+    <br><br>
+    <div id="msg"></div>
+    <div id="msg2"></div>
+   
+</body>
+</html>
+<script>
+    function jogo(){
+        var random = (Math.random() * 3).toFixed(0);
+        var random2 = (Math.random() * 3).toFixed(0);
+
+        if(random == 0){
+            msg.innerHTML = ` <img src="https://jokenpo-lime.vercel.app/pedra.png" width="100px">`
+
+        } else if(random == 1){
+            msg.innerHTML = ` <img src="https://jokenpo-lime.vercel.app/tesoura.png" width="100px">`
+
+        } else if(random == 2){
+            msg.innerHTML = ` <img src="https://wesraiuga.github.io/games/assets/img/jokenpo/jokenpo-user-papel.png" width="100px">`
+        }
+
+        if(random2 == 0){
+            msg2.innerHTML = ` <img src="https://jokenpo-lime.vercel.app/pedra.png" width="100px">`
+
+        } else if(random2 == 1){
+            msg2.innerHTML = ` <img src="https://jokenpo-lime.vercel.app/tesoura.png" width="100px">`
+
+        } else if(random2 == 2){
+            msg2.innerHTML = ` <img src="https://wesraiuga.github.io/games/assets/img/jokenpo/jokenpo-user-papel.png" width="100px">`
+        }
+
+        
+    }
+
+
+
+
+
+</script>

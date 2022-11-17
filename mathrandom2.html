@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escudo de time</title>
+</head>
+<body>
+    <button onclick="sorteio()">Sortear um time!</button>
+    <br><br>
+    <div id="foto"></div>
+   
+</body>
+</html>
+<script>
+    function sorteio(){
+        var random = (Math.random() * 4).toFixed(0) ;
+        console.log(random)
+        if(random == 0){
+            foto.innerHTML = `${random} <img src="https://cdn.meutimao.com.br/_upload/ckeditor/2022/01/17/mascote-do-corinthians-elson-souto_jb.jpg" width: 150px;>`
+        } else if(random == 1){
+            foto.innerHTML = `${random} <img src="https://www.fansportwear.com/imagem/index/25199720/G/arte_png.png" width: 150px;>`
+        } else if(random == 2){
+            foto.innerHTML = `${random} <img src="https://i.pinimg.com/564x/7a/24/69/7a2469c48cb195b009e6164752d97127.jpg" width: 150px;">`
+        } else if(random == 3){
+            foto.innerHTML = `${random} <img src="https://sep-bucket-prod.s3.amazonaws.com/wp-content/uploads/2019/08/porco.jpg" width: 150px;>`
+        }
+    }
+
+
+
+
+
+
+</script>

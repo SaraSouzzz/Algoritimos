@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+</head>
+<body>
+   <img src="https://showdepremios.qrsorteios.com.br/wp-content/uploads/2021/11/sorteiosTopo02.png" width="150px" onclick="sorteio()">
+   <br><br>
+   <div id="msg"></div>
+</body>
+</html>
+<script>
+    function sorteio(){
+        var random = (Math.random() * 10).toFixed(2);
+
+        // if(random > 10){
+        msg.innerHTML += `A nota sorteada foi: ${random} <br>`
+        // } else{
+        //     msg.innerHTML += `A nota sorteada foi: ${random} <br>`
+
+        // }
+    }
+
+
+
+
+
+</script>

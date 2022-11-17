@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números aleatórios</title>
+</head>
+<body>
+    <h1>Random</h1>
+    <button onclick="sorteio()">Sortear</button>
+    <br><br>
+    <div id="msg"></div>
+</body>
+</html>
+<script>    
+    function sorteio(){
+        var random = Math.random();
+
+        if(random > 0.5){
+            msg.innerHTML += `${random} / Eu arredondaria para 1<br>`
+        } else{
+            msg.innerHTML += `${random} / Eu arredondaria para 0<br>`
+        }
+    }
+
+
+
+
+</script>
