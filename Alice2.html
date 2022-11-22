@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professora Alice</title>
+</head>
+<body>
+    <div id="tela1">
+        <h2>Análise de performance de alunos - Registro</h2>
+        <br><br>
+        Entre com o nome do aluno: <input type="text" id="inp_nomealuno">
+        <br><br>
+        Entre com a nota do aluno: <input type="text" id="inp_notaluno">
+        <br>
+        <button onclick="registro()">Registrar</button>
+        <button onclick="analise()">Analisar</button>
+        <br><br>
+        <div id="msg"></div>
+        </div>
+       
+    <div id="tela2" style="display: none;">
+    <h1>Professora Alice</h1>
+    Insira a nota de pesquisa: <input type="text" id="inp_nota">
+    <br><br>
+     <button onclick="bt_igual()">Igual</button>
+     <button onclick="bt_menor()">Menor</button> 
+     <button onclick="bt_maior()">Maior</button> 
+     <button onclick="bt_diferente()">Diferente</button>
+     <br><br><br>
+     <div id="msg2"></div>
+    </div>
+</body>
+</html>
+<script>
+    vt_nota = [];
+    vt_nome = [];
+
+    function registro(){
+         var erro = true;
+         var nome = inp_nomealuno.value;
+         var notas = Number(inp_notaluno.value);
+         console.log(notas)
+         console.log(nome)
+
+         if(nome.length == 0){
+            alert("Nome incorreto");
+            erro = true;
+         } if(Number.isNaN(notas) || notas.length == 0 || notas < 0 || notas > 10){
+            alert("Preencha corretamente a nota");
+            erro = false;
+         } if(erro){
+            vt_nome.push(nome);
+            vt_nota.push(notas);
+            inp_nomealuno.value = "";
+            inp_notaluno.value = "";
+            msg.innerHTML = ""
+            
+            for (var index = vt_nome.length-1; index >= 0; index--){
+                msg.innerHTML += `O aluno ${vt_nome[index]} tem a nota ${vt_nota[index]}. <br>`
+                // O index é um numero que vc ta buscando no vetor (ao mesmo tempo é a variavel contador do for)
+                
+            } 
+         }
+    }
+    function analise(){
+        if(vt_nome.length == 0){
+            alert("Cadastre alunos.");
+        } else{
+            tela1.style.display = 'none';
+            tela2.style.display = 'block';
+        } 
+    }
+
+    function bt_igual(){
+        var igual = Number(inp_nota.value);
+        var erro = true;
+
+        if(igual.length == 0 || Number.isNaN(igual) || igual < 0){
+            alert("Preencher as notas corretamente.");
+            erro = false;
+        } if(erro){
+
+            for (var index = 0; index <= vt_nota.length; index++) {
+                
+                if(vt_nota[index] == igual){
+                    msg2.innerHTML += `O aluno ${vt_nome[index]} ficou com a nota ${vt_nota[index]}.`
+                }
+                
+            }
+        }
+    }
+
+
+
+
+
+</script>
