@@ -1,79 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise de performance de alunos.</title>
 </head>
+
 <body>
-    <div style="border: 2px black solid; width: 50%; height: 600px;">
-    <h2>Análise de performance de alunos - Registro</h2>
-    <br><br>
-    Entre com o nome do aluno: <input type="text" id="inp_nomealuno">
-    <br><br>
-    Entre com a nota do aluno: <input type="text" id="inp_notalauno">
-    <br>
-    <button onclick="registro()">Registrar</button>
-    <button onclick="analise()">Analisar</button>
-    <br><br>
-    <div id="msg"></div>
+    <div id="tela1">
+        <h2>Análise de performance de alunos - Registro</h2>
+        <br><br>
+        Entre com o nome do aluno: <input type="text" id="inp_nomealuno">
+        <br><br>
+        Entre com a nota do aluno: <input type="text" id="inp_notaluno">
+        <br>
+        <button onclick="registro()">Registrar</button>
+        <button onclick="analise()">Analisar</button>
+        <br><br>
+        <div id="msg"></div>
     </div>
-<br><br>
-<div style="border: 2px black solid; width: 50%; height: 600px;">
-    <h2>Análise de performance de alunos - Registro</h2>
     <br><br>
-    Entre com o intervalo de notas: <input type="text" id="inp_de"> 
-                                    <input type="text" id="inp_ate">
-    
+    <div id="tela2" style="display: none;">
+        <h2>Análise de performance de alunos - Registro</h2>
+        <br><br>
+        Entre com o intervalo de notas: De - <input type="text" id="inp_de">
+        <br>
+        até <input type="text" id="inp_ate">
+        <button onclick="pesquisa()">Pesquisar</button>
+        <div id="msg2"></div>
+
     </div>
 </body>
+
 </html>
 <script>
+    var vt_nome = [];
+    var vt_nota = [];
 
-    var vt_analise = [];
-
-    function registro(){
+    function registro() {
+        var erro = true;
         var nome = inp_nomealuno.value;
-        var nota = Number(inp_notalauno.value);
-      
+        var notas = Number(inp_notaluno.value);
+        console.log(notas)
+        console.log(nome)
 
-        if(nome == ''){
-            alert('Preencha o campo corretamente.')
-        } else if(nota < 0 || nota > 10){
-            alert('As notas devem estar entre 0 e 10.')
-        } else{
-            console.log(nome);
-            vt_analise.push(nome);
-            vt_analise.push(nota);
-            msg.innerHTML = ''
+        if (nome.length == 0) {
+            alert("Nome incorreto");
+            erro = true;
+        } if (Number.isNaN(notas) || notas.length == 0 || notas < 0 || notas > 10) {
+            alert("Preencha corretamente a nota entre 0 e 10");
+            erro = false;
+        } if (erro) {
+            vt_nome.push(nome);
+            vt_nota.push(notas);
+            inp_nomealuno.value = "";
+            inp_notaluno.value = "";
+            msg.innerHTML = ""
 
-            for (var index = vt_analise.length -1; index >= 0; index--) {
+            for (var index = vt_nome.length - 1; index >= 0; index--) {
+                msg.innerHTML += `O aluno ${vt_nome[index]} tem a nota ${vt_nota[index]}. <br>`
+                // O index é um numero que vc ta buscando no vetor (ao mesmo tempo é a variavel contador do for)
 
-                msg.innerHTML += `${vt_analise[index]}, <br>`
-            } 
-        
-           
+            }
         }
-
-        inp_nomealuno.value = '';
-        inp_notalauno.value = '';
     }
 
+    function analise() {
+        if (vt_nome.length == 0) {
+            alert('Cadastre alunos primeiro.');
+        } else {
+            tela1.style.display = 'none';
+            tela2.style.display = 'block';
+        }
+    }
 
-
-    function analise(){
+    function pesquisa() {
         var de = inp_de.value;
         var ate = inp_ate.value;
+        var erro = true;
 
-        if(de < 0 || de > 10){
-            alert('As notas devem estar entre 0 e 10.');
-        } else if(ate < 0 || ate > 10){
-            alert('As notas devem estar entre 0 e 10.');
-        } else if(de > ate){
-            alert('O intervalo de deve ser menor ou igual ao intervalo de até.');
+        if (de.length == 0 || Number.isNaN(de) || de < 0) {
+            alert('Preencher corretamente o intervalo DE');
+            erro = false;
+        } if (ate.length == 0 || Number.isNaN(ate) || ate < 0) {
+            alert('Preencher corretamente o intervalo ATE');
+            erro = false;
+        } if (de >= ate) {
+            alert('O intervalo DE deve ser menor ou igual que o intervalo ATE');
+            erro = false;
+        }
+        if (erro) {
+
+            for (var index = 0; index <= vt_nota.length; index++) {
+
+                if (vt_nota[index] >= de && vt_nota[index] <= ate) {
+
+                    msg2.innerHTML += `O aluno ${vt_nome[index]} tem a nota ${vt_nota[index]} <br>`
+
+                }
+
+            }
+            msg.innerHTML = ''
         }
     }
-
+    
 
 </script>
