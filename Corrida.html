@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrida - F1</title>
+</head>
+<body>
+    <h1>Corrida F1 2022</h1>
+    <img src="https://i.pinimg.com/originals/ef/ef/d6/efefd6d8399220496e0a2c674c636d8c.png" alt="carro" width="250px" onclick="bt_corrida()">
+    <br><br>
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+    
+    
+    var vt_carro1_tempo = [];
+    var vt_carro1_combustivel = [];
+
+    var vt_carro2_tempo = [];
+    var vt_carro2_combustivel = [];
+
+    var vt_carro3_tempo = [];
+    var vt_carro3_combustivel = [];
+
+    
+
+    function bt_corrida(){
+        var gasolina = 50;
+        
+      
+        for(var i = 0; i < 10; i++){
+            var velocidade = (Math.random() * 40 + 230).toFixed(0);;
+
+            // push no vetor do tempo e dividindo pelo oque precisa para encontrar o tempo.
+            vt_carro1_tempo.push(20/velocidade);
+            vt_carro2_tempo.push(20/velocidade);
+            vt_carro3_tempo.push(20/velocidade);
+
+
+            vt_carro1_combustivel.push((velocidade/250)*5);
+            vt_carro2_combustivel.push((velocidade/250)*5);
+            vt_carro3_combustivel.push((velocidade/250)*5);
+
+            
+            msg.innerHTML += `${i + 1}° Carro Relampago Marquinhos - ${vt_carro1_tempo[i]} - ${gasolina - vt_carro1_combustivel[i]}<br>`
+        }
+
+      console.log(vt_carro1_tempo)  
+      console.log(vt_carro2_tempo)  
+      console.log(vt_carro3_tempo)      
+      console.log(vt_carro1_combustivel)  
+      console.log(vt_carro2_combustivel) 
+      console.log(vt_carro3_combustivel) 
+    
+    }
+
+
+
+</script>
