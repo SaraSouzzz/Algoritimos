@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de bairro</title>
+</head>
+<body>
+    Nome do bairro: <input type="text" id="inp_bairro">
+    <button onclick="bt_bairro()">Cadastrar Bairro</button>
+    Número do local: <input type="text" id="inp_numero">
+    <button onclick="bt_relembarar()">Relembrar Moradia</button>
+    <br><br>
+    <div id="msg"></div>
+</body>
+</html>
+<script>
+    var vt_bairro = [];
+    function bt_bairro(){
+        var bairro = inp_bairro.value;
+        var numero = inp_numero.value;
+
+        inp_bairro.value = '';
+        inp_numero.value = '';
+        console.log(bairro);
+        console.log(numero);
+
+        if(bairro == ''){
+            alert('Informar um bairro.')
+        } else {
+            vt_bairro.push(bairro);
+        }
+
+    } function bt_relembarar(){
+        var bairro = inp_bairro.value;
+        var numero = inp_numero.value;
+
+        if(numero == ''){
+            alert('Informar um número')
+        } else if(Number.isNaN(numero)){
+            alert('Insira um valor númerico')
+        } else{
+
+            if(numero > vt_bairro.length){
+                msg.innerHTML = `Você ainda não morou num ${numero}º bairro!` 
+            } else {
+            msg.innerHTML = `${vt_bairro[numero-1]}`
+            }
+        }
+    }
+
+
+
+
+
+
+</script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  Limite inferior: <input type="text" id="inp_inferior">
+  <br>
+  Limite superior: <input type="text" id="inp_superior">
+  <br>
+  Limite divisivel: <input type="text" id="inp_divisao">
+  <br><br>
+  <button onclick="bt_conta()">Contar</button>
+  <br><br>
+  <div id="msg"></div>
+  <br><br>
+  <div id="msg2"></div>
+
+</body>
+
+</html>
+<script>
+  function bt_conta() {
+    var inferior = Number(inp_inferior.value);
+    var superior = Number(inp_superior.value);
+    var divisao = Number(inp_divisao.value);
+    var cont = 1;
+    var soma = 0;
+    var media = 0;
+    var total = 0;
+
+    msg.innerHTML = ''
+
+    if (inferior <= 1) {
+      alert('Favor inserir um número maior que 1')
+
+    } else if (superior >= 100) {
+      alert('Favor inserir um número menor que 100')
+
+    } else if (superior <= inferior) {
+      alert('Favor inserir um limite superior maior que o inferior')
+
+    } else if (divisao < 3 || divisao > 10) {
+      alert('Favor inserir um número entre 3 e 10')
+
+    } else {
+
+      while (cont <= superior) {
+
+        if (cont % divisao == 0) {
+
+          msg.innerHTML += `${cont},`
+
+          total++
+        }
+        cont++
+
+        
+        soma += total;
+        media = soma / cont;
+
+      }
+
+      msg2.innerHTML = `QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${total} <br>
+
+                        SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${soma} <br>
+
+                        MÉDIA DOS NÚMEROS EXIBIDOS: ${media.toFixed(2)} <br>
+                        
+                        `
+    }
+  }
+
+
+
+
+
+
+
+</script>

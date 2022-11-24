@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contabilidade Balança</title>
+</head>
+
+<body>
+  Insira o saldo anterior: <input type="text" id="inp_anterior">
+  <br><br>
+  Insira o valor do débito: <input type="text" id="inp_debito">
+  <br><br>
+  Insira o valor do crédito: <input type="text" id="inp_credito">
+  <br><br><br>
+  <button onclick="bt_calcular()">Calcular</button>
+  <br><br><br>
+  <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+  function bt_calcular() {
+
+    var S_anterior = Number(inp_anterior.value);
+    var S_debito = Number(inp_debito.value);
+    var S_credito = Number(inp_credito.value);
+
+    // Calcular o saldo final, sendo saldo final é o saldo anterior adicionado
+    // com o valor de crédito e subtraído com o valor de débito.
+
+    var S_final = (((S_anterior) + S_credito) - S_debito);
+    console.log(S_final);
+    // Diferença
+    var Diferenca = S_final - S_anterior;
+    console.log(Diferenca)
+    // Proporção
+    var Proporcao = ((S_final / S_anterior) * 100).toFixed(2)
+    console.log(Proporcao)
+
+
+    div_msg.innerHTML +=
+
+      `
+    Saldo anterior: ${S_anterior}
+    <br>
+    Movimentação ${S_credito - S_debito}
+    <br>
+    Saldo Final: ${S_final}
+    <br>
+    Diferença de valor: ${Diferenca}
+    <br>
+    Proporção dos valores: ${Proporcao}
+    `
+
+    inp_anterior.value = " ";
+    inp_credito.value = " ";
+    inp_debito.value = " ";
+
+  }
+
+
+
+
+
+
+
+</script>

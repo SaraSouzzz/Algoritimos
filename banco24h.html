@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Fase 1 -->
+    <h1>Banco 24h</h1>
+    <br><br>
+    Quantidade de notas de R$10,00: <input type="text" id="inp_10">
+    <br><br>
+    Quantidade de notas de R$50,00: <input type="text" id="inp_50">
+    <br><br>
+    Quantidade de notas de R$100,00: <input type="text" id="inp_100">
+    <br><br><br>
+    <button onclick="bt_banco()">Iniciar</button>
+    <br><br><br>
+    
+    <!-- Fase 2 -->
+    
+    <div id="msg">Notas disponíveis: R$10,00 R$50,00 R$100,00</div>
+    <br><br>
+    Valor do saque: <input type="text" id="inp_saque">
+    <br><br><br>
+    <button onclick="bt_saque()">Solicitar saque</button>
+</body>
+</html>
+<script>    
+     var nota_dez = 10;
+     var nota_cinquenta = 50;
+     var nota_cem = 100;
+     
+     function bt_banco(){
+         var dez = Number(inp_10.value) * nota_dez; 
+         var cinquenta = Number(inp_50.value) * nota_cinquenta; 
+         var cem = Number(inp_100.value) * nota_cem;  
+         var soma = dez  + cinquenta + cem;
+        console.log(dez)
+        console.log(cinquenta)
+        console.log(cem)
+        console.log(soma)
+        
+
+    }
+
+    function bt_saque(){
+        var dez = Number(inp_10.value) * nota_dez; 
+        var cinquenta = Number(inp_50.value) * nota_cinquenta; 
+        var cem = Number(inp_100.value) * nota_cem; 
+        var saque = inp_saque.value;
+        var soma = dez  + cinquenta + cem;
+        var saque_dinheiro = soma - saque;
+        
+
+        if(saque <= 0){
+        
+        alert(`Não é possivel sacar 0 ou menos. Favor inserir um valor.`)
+              
+        } else if(saque % 5){
+    
+            alert("Valor não possível devido às notas disponíveis")
+           
+        } else if(saque > soma){
+            
+                alert("Montante disponível não atende a solicitação.")
+           
+        } else if(soma < saque){
+            
+            alert("A quantidade e valor das cédulas disponíveis não atende o valor desejado")
+
+    
+        } else if(saque - soma){
+        
+
+        } else {
+            alert("Retire o dinheiro no local indicado.")
+        }
+    }
+
+
+
+
+
+</script>

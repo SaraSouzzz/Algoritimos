@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banco do Marco</title>
+</head>
+
+<body>
+  Valor guardado: <input type="text" id="inp_guardado">
+  Valor poupado: <input type="text" id="inp_poupado">
+  Parcela maiores que 10 meses: <input type="text" id="inp_mes">
+  Percentual de juros mensal: <input type="text" id="inp_juros">
+  <br><br>
+  <button onclick="bt_poupar()">Vamos poupar?</button>
+  <br><br><br>
+  <div id="msg"></div>
+  <div id="msg2"></div>
+
+
+</body>
+
+</html>
+<script>
+  var repeticao = 0;
+
+  function bt_poupar() {
+    var guardado = Number(inp_guardado.value);
+    var poupado = Number(inp_poupado.value);
+    var parcela = Number(inp_mes.value);
+    var inicial = Number(inp_guardado.value);
+    var juros = Number(inp_juros.value);
+    var final = Number(inicial + juros + poupado);
+    var valorjuros = ((guardado * juros) / 100)
+    var cont = 1;
+
+
+    if (Number.isNaN(guardado)) {
+      alert("O número deve ser um valor numerico.")
+    } else if (poupado <= 0) {
+      alert("Insira um valor maior do que zero.")
+    } else if (parcela < 10) {
+      alert("Insira um valor maior que 10 meses.")
+    } else if (juros < 0.5 && juros > 2) {
+      alert('Insira um valor entre 0.5 e 2.')
+    }
+    else {
+
+      // Guardando o valor na input, para não alterar o valor inicial
+      var dinheiro = guardado;
+
+
+      while (cont <= parcela) {
+
+        // Incrementando o valor guardado com o poupado
+        // Assim não altera o valor inicial da input.
+        dinheiro += poupado
+        // Saldo final é o saldo inicial adicionado com os juros e o valor poupado do mês
+
+        msg.innerHTML += `Mês ${cont} - saldo inicial = R$${guardado} saldo final = R$${dinheiro} <br>`
+        cont++
+        // Somando o valor guardado com o valor poupado
+        guardado += poupado
+
+      }
+      msg2.innerHTML = `Você começou com R$${inicial}
+                        Depositou R$${poupado}
+                        E agora você tem: R$${guardado}
+                        Neste período sua conta rendeu R$${guardado + valorjuros}
+                        Sua rentabilidade foi de ${inicial + valorjuros + poupado}%`
+      // Valor guardado pois é o total.eee
+      // Guardado - poupado Pois é valor total menos o valor inicial.
+      // Os meses acumularam valor X - o valor que começou.
+    }
+
+
+  }
+
+
+
+
+
+
+
+</script>

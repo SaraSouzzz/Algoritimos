@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cofrinho</title>
+</head>
+
+<body>
+    <h1>Cofrinho</h1>
+
+    Quanto você já tem guardado? <input type="text" id="ipt_guardado">
+    <br><br>
+    Qual sera o valor que será poupado a cada mês?: <input type="text" id="ipt_poupado">
+    <br><br>
+    Qual será a quantidade de meses?: <input type="text" id="ipt_meses">
+    <br><br>
+    <button onclick="Calcular()">Vamos Poupar</button>
+    <br><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+
+<script>
+
+    function Calcular() {
+        var guardado = Number(ipt_guardado.value)
+        var poupado = Number(ipt_poupado.value)
+        var meses = Number(ipt_meses.value)
+        var saldo = guardado + poupado
+        var cont = 0
+        div_msg.innerHTML = ""
+
+        if (Number.isNaN(guardado)) {
+
+            alert(`Insira um valor numérico no campo "guardado".`)
+
+        } else if (Number.isNaN(poupado) || poupado <= 0) {
+            alert(`Insira um valor numérico maior que 0 no campo "poupado a cada mês".`)
+
+        } else if (meses < 6 || meses > 20 || Number.isNaN(meses)) {
+            alert(`Insira um numero de 6 a 20 no campo "quantidade de meses".`)
+
+        } else {
+            while (cont < meses) {
+                cont++
+                if (cont == 1) {
+                    div_msg.innerHTML += `Marco tinha R$${guardado.toFixed(2)}, depois do depósito do ${cont}º mês ele ficou com ${saldo}<br>`
+
+                }
+
+                if (cont > 1) {
+                    saldo = guardado + poupado
+                    div_msg.innerHTML += `Marco tinha R$${guardado.toFixed(2)}, depois do depósito do ${cont}º mês ele ficou com ${saldo}<br>`
+                }
+                guardado += poupado
+
+            }
+            guardado -= poupado * cont
+            div_msg.innerHTML += `<br> Você começou com R$${guardado} <br> 
+                                       Durante os ${cont} meses você poupou R$${poupado * cont}<br> 
+                                       E agora você tem: R$${saldo}`
+        }
+
+        ipt_guardado.value = ""
+        ipt_poupado.value = ""
+        ipt_meses.value = ""
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resto de divisão</title>
+</head>
+<body>
+    <input type="text" id="inp_num1">
+    <input type="text" id="inp_num2">
+    <button onclick="bt_cal()">cal</button>
+    <br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+function bt_cal(){
+
+    var num1 = inp_num1.value
+    var num2 = inp_num2.value
+    var resto = num1  % num2 
+
+    div_msg.innerHTML = `${resto}`
+    
+
+}
+
+
+</script>

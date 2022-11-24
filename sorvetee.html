@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4MIGAS</title>
+</head>
+
+<body>
+    Valor do sorvete: <input type="text" id="inp_valor">
+    Quantidade em gramas: <input type="text" id="inp_grama">
+    Tipo de cobertura: <input type="text" id="inp_cobertura">
+    Tipo de sorvete: <input type="text" id="inp_sorvete">
+    <br><br>
+    <button onclick="bt_sovete()">Sorvetar</button>
+    <br><br><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    function bt_sovete() {
+
+        var valor = Number(inp_valor.value);
+        var grama = Number(inp_grama.value);
+        var cobertura = inp_cobertura.value;
+        var sorvete = inp_sorvete.value;
+        var totalP = 0;
+
+        // 1.11 = 100% + 11%
+        // 0.90 é 100% - 10% 
+        // dentro do valor tem o preço da grama do sorvete 
+        // *= pega o valor da grama e mult 1.11
+        // para desconto e acréscimo é a mesma lógica de multiplicar.
+
+        if (sorvete == "G") {
+            valor *= 1.11
+        } else {
+            valor *= 0.90
+        } if (cobertura != "C") {
+            valor += 0.01
+        }
+
+        // A parte de calculos sempre fica no final, ao não ser... 
+        totalP = valor * grama
+
+        if (totalP > 10) {
+            div_msg.innerHTML = `
+        O seu sorvete vai custar R$ ${totalP.toFixed(2)} e vai comprometer a mesada.`
+        }
+        else {
+            div_msg.innerHTML = `
+            Hoje você está manerando hoje, gastou somente R$${totalP.toFixed(2)}.`
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+</script>

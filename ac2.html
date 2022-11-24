@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC2 Naruto</title>
+</head>
+
+<body>
+    <h1>Naruto a batalha dos clones</h1>
+    Entre com a quantidade de energia: <input id="ipt_energia"> <br>
+    Entre com a quantidade de clones: <input id="ipt_clones"> <br>
+    Entre com a quantidade de clones por linha: <input id="ipt_clones_linha"> <br><br>
+    <button onclick="criar_clones()">Criar Clones</button> 
+    <br><br>
+    <div id="div_foto"></span>
+</body>
+
+</html>
+<script>
+
+    var ax_energia = 0;
+    var ax_clones = 0;
+    var ax_clones_linha = 0;
+
+    function criar_clones() {
+
+        ax_energia = Number(ipt_energia.value);
+        ax_clones = Number(ipt_clones.value);
+        ax_clones_linha = Number(ipt_clones_linha.value);
+        div_foto.innerHTML = " ";
+
+        if (ax_energia >= 20 && ax_energia <= 5000 &&
+            ax_clones >= 0 && ax_clones <= 250 &&
+            ax_clones_linha > 0) {
+
+            if (ax_energia >= ax_clones * 20) {
+                montar_linha();
+            } else {
+                alert("A energia não é suficiente para a geração dos clones");
+            };
+
+        } else {
+            alert("ERRO NA ENTRADA DE DADOS – Energia tem que ser entre 20 e 5.000. Quantidade de Clones tem que ser entre 0 e 250. Quantidade de Clones por linha tem que ser maior que 0")
+        }
+    }
+    
+    function montar_linha() {
+
+        var index = 0;
+        var ax_saldo_energia = ax_energia - ax_clones * 20;
+        var ax_percent_saldo = ax_saldo_energia / ax_energia * 100
+
+        while (index < ax_clones) {
+
+            index++;
+            div_foto.innerHTML += '<img src="https://static.wikia.nocookie.net/naruto-pedia/images/e/ea/Naruto.png/revision/latest?cb=20120407114822&path-prefix=pt-br" style="height: 100px;">';
+
+            if (index % ax_clones_linha == 0) {
+                div_foto.innerHTML += '<br>';
+            }
+        }
+
+        div_foto.innerHTML += `<br><br> Energia Inicial = ${ax_energia}
+            <br> Qtde de Clones = ${ax_clones}
+            <br> Sobra de Energia = ${ax_saldo_energia} <br><br>`;
+        
+        if (ax_saldo_energia > 1000 || 
+            (ax_clones > 50 && ax_percent_saldo >= 20)) {
+            div_foto.innerHTML += 'PROVAVELMENTE VOCE VAI GANHAR';
+        } else if (ax_saldo_energia > 500 ||
+                    (ax_clones>=20 && ax_clones<=50 && ax_percent_saldo>=10)) {
+            div_foto.innerHTML += 'A LUTA VAI SER MUITO BOA';
+        } else {
+            div_foto.innerHTML += 'TORÇA PARA O ADVERSÁRIO SER FRAQUINHO'; 
+        }
+  
+    }
+</script>

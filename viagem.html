@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viagem</title>
+</head>
+<body>
+    Destino de viagem: <input id="inp_viagem"></input>
+    <button onclick="bt_cad()">Adicionar</button>
+    <button onclick="bt_primeira()">Verificar primeira viagem</button>
+    <button onclick="bt_terceira()">Terceira viagem</button>
+    <button onclick="bt_ultima()">Última viagem</button>
+    <br><br>
+    <div id="msg"></div>
+
+</body>
+</html>
+<script>
+    var vt_viagem = [];
+    
+
+    function bt_cad(){
+        var destino = inp_viagem.value;
+        
+        inp_viagem.value = '';
+        
+        console.log(vt_viagem)
+
+        if(destino == ''){
+                alert('Cadastre uma viagem.');
+            } else if(destino != ''){
+                vt_viagem.push(destino);
+            }
+    } 
+        function bt_primeira(){
+            var destino = inp_viagem.value;
+            
+            if(vt_viagem.length >= 1){
+                msg.innerHTML = `A sua primeira viagem foi para ${vt_viagem[0]}`
+            } else {
+                msg.innerHTML = 'Ainda não viajou para este lugar'
+            }
+                
+        }
+    
+    function bt_terceira(){
+        var destino = inp_viagem.value;
+
+        if(vt_viagem.length >= 2){
+            msg.innerHTML = `A sua terceira viagem foi para ${vt_viagem[2]}`
+        } else {
+            msg.innerHTML = 'Ainda não viajou para este lugar'
+
+        }
+    }
+            function bt_ultima(){
+                var destino = inp_viagem.value;
+
+                if(vt_viagem.length <= 0){
+                    msg.innerHTML = 'Ainda não viajou para este lugar'
+                } else {
+                    msg.innerHTML = `A sua última viagem foi para ${vt_viagem[vt_viagem.length-1]}`
+                }
+            }
+
+
+
+
+
+</script>

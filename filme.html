@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes</title>
+</head>
+<body>
+    Insira seus 2 filmes preferidos e mais alguns: <input type="text" id="inp_filme">
+    <button onclick="bt_cadastro()">Cadastrar filme</button>
+    <button onclick="bt_favoritos()">Ver favoritos</button>
+    <br><br>
+    <div id="msg"></div>
+    <div id="msg2"></div>
+</body>
+</html>
+<script>
+    vt_filme = []
+    function bt_cadastro(){
+        var filmes = inp_filme.value;
+
+        if(filmes == ''){
+            alert('Insira filmes');
+        } else{
+            vt_filme.push(filmes);
+        }
+        
+    } function bt_favoritos(){
+        var filme = inp_filme.value;
+
+        if(vt_filme.length == 1 && vt_filme.length == 2){
+            msg.innerHTML = `Seus primeiro filme favorito é ${vt_filme[1]} e seu segundo é ${vt_filme[2]}`
+            msg2.innerHTML = `"Total: ${vt_filme.length-1}`
+        } 
+    }
+
+
+
+
+
+
+
+</script>

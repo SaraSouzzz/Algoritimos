@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financie seu carro</title>
+</head>
+
+<body>
+  Valor a vista: <input type="text" id="inp_vista">
+  <br><br>
+  Taxa de juros ao mês: <input type="text" id="inp_mes">
+  <br><br>
+  Quantidade de parcelas: <input type="text" id="inp_parcelas">
+  <br><br><br>
+  <button onclick="bt_carro()">Calcular prejuizo</button>
+  <br><br><br>
+  <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+  function bt_carro() {
+
+    var valor_inicial = inp_vista.value;
+    var valor = valor_inicial / inp_parcelas.value;
+    var parcela = inp_parcelas.value;
+
+    // pega o valor para transformar em 1.0x por exemplo, 100 + 5 = 105
+    // 105 / 100 = 1.05 essa conta é so para isso
+    var juros = (100 + Number(inp_mes.value)) / 100;
+
+    // formula do cálculo da PG, pega o valor que é o preço do carro divido pelas parcelas e multiplica pelo juros
+    // potencia de parcela -1 
+    var calculo = valor * (juros ** (parcela - 1));
+
+    // Esse pega o valor da PG e soma com o preço do carro para dar o total, tipo 40k vira 80
+    var Pgtotal = Number(calculo) + Number(valor_inicial);
+    // 80% do valor do carro 
+    var Porcent = valor_inicial * 0.8;
+    // o equivalente de carros que ele vai ter comprado, se um carro vale 40k e ele pagou 80 vale 2 carros
+    // ele pega o valor da pg + o valor inicial e divide pelo valor inicial 🤷‍♀️
+    var Pgcarros = A / valor_inicial;
+
+
+    div_msg.innerHTML = `Seu carro vai sair por um total de R$${Pgtotal.toFixed(2)}. Após 1 mês, ele já vai valer só R$${Porcent}.
+        Porque comprou financiado, vai pagar o correspondente a ${Pgcarros.toFixed(1)} carros.`
+
+  }
+
+
+
+
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco</title>
+</head>
+<body>
+    Valor R$ <input type="text" id="inp_valor">
+    <br><br>
+    <button onclick="bt_banco()">Calcular</button>
+    <br><br><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function bt_banco(){
+
+        var valor = inp_valor.value 
+
+       if(valor < 0){
+            div_msg.innerHTML = `Você está devendo R$${valor}`
+       } else if (valor <= 2000){
+            div_msg.innerHTML = `Você está com o saldo normal de R$${valor}`
+       } else if(valor <= 5000){
+            div_msg.innerHTML = `Você está com saldo acima da média com R$${valor}`
+       }
+         else{
+            div_msg.innerHTML = `Você é um investidor com seu saldo de R$${valor}`
+         }
+    }
+
+
+
+
+
+</script>

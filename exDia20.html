@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex dia 20</title>
+</head>
+
+<body>
+    <h1>Limites da amostragem</h1>
+
+    Limite inferior da amostragem: <input type="text" id="ipt_inf" placeholder="insira aqui...">
+    <br><br>
+    Limite superior da amostragem: <input type="text" id="ipt_sup" placeholder="insira aqui...">
+    <br><br>
+    Número para testar divisibilidade: <input type="text" id="ipt_div" placeholder="insira aqui...">
+    <br><br>
+    <button onclick="testar()">Contar</button>
+    <br><br>
+    <div id="div_msg"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    var numeroVar = 0
+
+    function testar() {
+        var inferiorVar = Number(ipt_inf.value);
+        var superiorVar = Number(ipt_sup.value);
+        var divVar = Number(ipt_div.value);
+        var cont = inferiorVar; // indica os numeros divisiveis exibidos na tela 
+        var qtd = 0
+        var somatorio = 0
+        var media = 0
+        var maiorn = 0
+        var menorn = 0
+        div_msg.innerHTML = ""
+
+        if (inferiorVar <= 1 || Number.isNaN(inferiorVar)) {
+            alert(`Insira um número maior que 1 em limite inferior`)
+
+        } else if (superiorVar >= 100 || superiorVar <= inferiorVar || Number.isNaN(superiorVar)) {
+            alert(`Insira um número menor que 100 e maior que o limite inferior`)
+
+        } else if (divVar < 3 || divVar > 10 || Number.isNaN(divVar)) {
+            alert(`Insira um número entre 3 e 10 para testar a divisibilidade`)
+
+        } else {
+
+            while (cont <= superiorVar) {
+                if (cont % divVar == 0) {
+                    div_msg.innerHTML += `${cont}`
+
+                    if (cont + divVar > superiorVar) {
+                        div_msg.innerHTML += ""
+                    } else {
+                        div_msg.innerHTML += ","
+                    }
+
+                    qtd++
+                    somatorio += cont
+                    media = somatorio / qtd
+
+                    if (qtd == 1) {
+                        maiorn = cont
+                        menorn = cont
+
+                    } else if (cont < menorn) {
+                        menorn = cont
+
+                    } else if (cont > maiorn) {
+                        maiorn = cont
+                    }
+
+                    cont++
+                } else {
+                    cont++
+                }
+
+            }
+            div_msg.innerHTML += `<br>
+                    QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${qtd} <br>
+
+                    SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${somatorio} <br>
+
+                    MÉDIA DOS NÚMEROS EXIBIDOS: ${media} <br>
+
+                    MAIOR NÚMERO EXIBIDO: ${maiorn} <br>
+
+                    MENOR NÚMERO EXIBIDO: ${menorn}`
+        }
+
+        ipt_sup.value = ""
+        ipt_inf.value = ""
+        ipt_div.value = ""
+    }
+</script>

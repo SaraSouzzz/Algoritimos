@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco do Marco</title>
+</head>
+<body>
+    Valor guardado: <input type="text" id="inp_guardado">
+    Valor poupado: <input type="text" id="inp_poupado">
+    Parcela de 6 a 12 meses: <input type="text" id="inp_mes">   
+    <br><br>
+    <button onclick="bt_poupar()">Vamos poupar?</button>
+    <br><br><br>
+    <div id="msg"></div>
+    <div id="msg2"></div>
+
+
+</body>
+</html>
+<script>
+        var repeticao = 0;
+        
+        function bt_poupar(){
+            var guardado = Number(inp_guardado.value);
+            var poupado = Number(inp_poupado.value);
+            var parcela = Number(inp_mes.value);
+            var inicial = Number(inp_guardado.value);
+            var cont = 1;
+        
+
+        if(Number.isNaN(guardado)){
+            alert("O número deve ser um valor numerico.")
+        } else if(poupado <= 0){
+            alert("Insira um valor maior do que zero.")
+        } else if(parcela < 6 || parcela > 20){
+            alert("Insira um valor entre 6 a 20 meses.")
+        } else {
+
+            // Guardando o valor na input, para não alterar o valor inicial
+            var dinheiro = guardado;
+            
+
+            while(cont <= parcela){
+
+                // Incrementando o valor guardado com o poupado
+                // Assim não altera o valor inicial da input.
+                dinheiro += poupado
+                
+                msg.innerHTML += `Marco tinha ${guardado}, depois do depósito do ${cont}º mês ele ficou com ${dinheiro} <br>` 
+                 cont++
+                 // Somando o valor guardado com o valor poupado
+                 guardado += poupado
+
+            }
+            msg2.innerHTML = `  Você começou com R$${inicial}
+                                Durante os ${cont - 1} meses você poupou R$${guardado - poupado}
+                                E agora você tem: R$${guardado}`
+                                // Valor guardado pois é o total.
+                                // Guardado - poupado Pois é valor total menos o valor inicial.
+                                // Os meses acumularam valor X - o valor que começou.
+        }
+      
+        
+    }
+
+
+
+
+
+
+
+</script>

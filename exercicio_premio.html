@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+
+<body>
+    Insira de 10 a 100: <input type="text" id="ipt_numero" placeholder="insira aqui...">
+    <br>
+    <button onclick="mostrar()">Registro</button> <button onclick="mostrar2()">Resumir</button>
+    <br><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+
+<script>
+    var maiorRegistro = 10
+    var menorRegistro = 101
+    var qtdRegistro = 0
+    var somaRegistro = 0
+    var mediaRegistro = 0
+
+    function mostrar() {
+
+
+        var numero = Number(ipt_numero.value)
+
+        if (Number.isNaN(numero) || numero < 10 || numero > 100) {
+            alert(`Insira um numero entre 10 a 100`)
+
+        } else {
+
+            qtdRegistro++
+            somaRegistro += numero;
+            mediaRegistro = somaRegistro / qtdRegistro
+
+            if (numero > maiorRegistro) {
+                maiorRegistro = numero
+
+            } else if (numero < menorRegistro) {
+                menorRegistro = numero
+
+            }
+        }
+
+        ipt_numero.value = ""
+
+    }
+
+    function mostrar2() {
+        div_msg.innerHTML = `${maiorRegistro} <br> ${menorRegistro} <br> ${somaRegistro} <br> ${mediaRegistro}`
+    }
+</script>
