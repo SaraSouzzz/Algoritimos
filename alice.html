@@ -77,8 +77,9 @@
     }
 
     function pesquisa() {
-        var de = inp_de.value;
-        var ate = inp_ate.value;
+        var nome = inp_nomealuno.value;
+        var de = Number(inp_de.value);
+        var ate = Number(inp_ate.value);
         var erro = true;
 
         if (de.length == 0 || Number.isNaN(de) || de < 0) {
@@ -87,24 +88,39 @@
         } if (ate.length == 0 || Number.isNaN(ate) || ate < 0) {
             alert('Preencher corretamente o intervalo ATE');
             erro = false;
-        } if (de >= ate) {
+        } if (de > ate) {
             alert('O intervalo DE deve ser menor ou igual que o intervalo ATE');
             erro = false;
+        } if (vt_nome.length > 0) {
+            for (let index = 0; index < vt_nome.length; index++) {
+                // Nome do vetor [i] ele vai pesquisar tudo dentro do vetor, se colocar 0 vai pegar o 1 elemento do vetor e por assim vai.
+                if (vt_nome[index] == nome) {
+                    alert('Não pode nomes repetidos.')
+                    erro = false;
+                    inp_nomealuno.value = '';
+                    inp_notaluno.value = '';
+                    break
+                }
+            }
         }
         if (erro) {
+            var contador = 0;
 
             for (var index = 0; index <= vt_nota.length; index++) {
 
                 if (vt_nota[index] >= de && vt_nota[index] <= ate) {
 
                     msg2.innerHTML += `O aluno ${vt_nome[index]} tem a nota ${vt_nota[index]} <br>`
-
+                    contador++
                 }
 
             }
-            msg.innerHTML = ''
+            if (contador == 0) {
+                alert('Não temos alunos cadastrados com essa nota.');
+            }
+            msg.innerHTML = '';
         }
     }
-    
+
 
 </script>

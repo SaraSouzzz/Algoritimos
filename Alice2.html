@@ -53,7 +53,19 @@
         } if (Number.isNaN(notas) || notas.length == 0 || notas < 0 || notas > 10) {
             alert("Preencha corretamente a nota");
             erro = false;
-        } if (erro) {
+        } if (vt_nome.length > 0) {
+            for (let index = 0; index < vt_nome.length; index++) {
+                // Nome do vetor [i] ele vai pesquisar tudo dentro do vetor, se colocar 0 vai pegar o 1 elemento do vetor e por assim vai.
+                if (vt_nome[index] == nome) {
+                    alert('Não pode nomes repetidos.')
+                    erro = false;
+                    inp_nomealuno.value = '';
+                    inp_notaluno.value = '';
+                    break
+                }
+            }
+        }
+        if (erro) {
             vt_nome.push(nome);
             vt_nota.push(notas);
             inp_nomealuno.value = "";
